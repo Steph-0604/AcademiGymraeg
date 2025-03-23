@@ -27,18 +27,21 @@ public class Question {
 	public void setId(int id) {
         this.Id = Id;
     }
+	
 	public String getQuestionText() {
         return questionText;
     }
 	public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
+	
 	public String getQuestionType() {
         return questionType;
     }
 	public void setQuestionType(String questionType) {
         this.questionType = questionType;
     }
+	
 	public String getCorrectAnswer() {
         return correctAnswer;
     }
