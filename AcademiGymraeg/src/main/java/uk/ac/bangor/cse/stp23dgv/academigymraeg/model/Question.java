@@ -17,6 +17,10 @@ public class Question {
 	public int getId() {
 		return Id;
 	}
+	public void setId(int id) {
+        this.Id = Id;
+    }
+
 	
 	
 
