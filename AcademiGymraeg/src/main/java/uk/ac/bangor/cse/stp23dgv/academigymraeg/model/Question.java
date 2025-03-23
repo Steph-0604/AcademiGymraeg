@@ -30,6 +30,10 @@ public class Question {
         this.Id = Id;
     }
 	
+	public String getEnglishNoun() {
+		return englishNoun;
+	}
+	
 
 	
 	public String getQuestionType() {
