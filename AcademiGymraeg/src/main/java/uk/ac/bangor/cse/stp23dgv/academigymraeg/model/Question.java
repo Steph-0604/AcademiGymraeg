@@ -10,7 +10,8 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
-	private String questionText;
+	private String englishNoun;
+	private String welshNoun;
 	private String questionType; //Gender, Meaning, Translation
 	private String correctAnswer;
 	
