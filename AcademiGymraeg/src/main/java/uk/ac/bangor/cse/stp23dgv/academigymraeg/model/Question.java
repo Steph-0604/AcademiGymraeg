@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Question {
+	@Id
 	private int Id;
 	private String questionText;
 	private String questionType; //Gender, Meaning, Translation
