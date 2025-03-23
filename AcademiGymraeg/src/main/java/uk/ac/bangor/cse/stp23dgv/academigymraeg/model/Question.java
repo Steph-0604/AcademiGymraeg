@@ -28,8 +28,8 @@ public class Question {
 	public int getQuestionId() {
 		return questionId;
 	}
-	public void setId(int id) {
-        this.Id = Id;
+	public void setQuestionId(int questionId) {
+        this.questionId = questionId;
     }
 	
 	public String getEnglishNoun() {
