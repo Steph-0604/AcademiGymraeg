@@ -23,6 +23,9 @@ public class Question {
         this.englishNoun = englishNoun;
         this.welshNoun = welshNoun;
         this.gender = gender;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
         this.correctAnswer = correctAnswer;
     }
 	
