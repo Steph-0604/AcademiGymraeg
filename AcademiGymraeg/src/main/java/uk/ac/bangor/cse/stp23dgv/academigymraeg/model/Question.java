@@ -23,6 +23,9 @@ public class Question {
 	public String getQuestionText() {
         return questionText;
     }
+	public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
 
 	
 	
