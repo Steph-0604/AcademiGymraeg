@@ -63,7 +63,9 @@ public class Question {
 	public void setOptionA(String optionA) {
 		this.optionA = optionA;
 	}
-	
+	public String getOptionB() {
+		return optionB;
+	}
 	public String getCorrectAnswer() {
         return correctAnswer;
     }
