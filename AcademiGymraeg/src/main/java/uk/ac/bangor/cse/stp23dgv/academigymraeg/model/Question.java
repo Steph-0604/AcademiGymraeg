@@ -13,7 +13,8 @@ public class Question {
 	private String englishNoun;
 	private String welshNoun;
 	private String gender; //Masculine, Feminine
-	private String optionA;
+	//user gets to choose three options
+	private String optionA; 
 	private String optionB;
 	private String optionC;
 	private String correctAnswer;
