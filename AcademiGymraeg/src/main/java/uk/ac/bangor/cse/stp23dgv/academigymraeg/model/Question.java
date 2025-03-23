@@ -32,6 +32,9 @@ public class Question {
 	public void setQuestionType(String questionType) {
         this.questionType = questionType;
     }
+	public String getCorrectAnswer() {
+        return correctAnswer;
+    }
 
 	
 	
