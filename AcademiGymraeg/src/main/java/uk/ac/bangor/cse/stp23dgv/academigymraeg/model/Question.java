@@ -38,9 +38,11 @@ public class Question {
 	}
 	
 	public String getWelshNoun() {
-		return WelshNoun;
+		return welshNoun;
 	}
-
+	public void setWelshNoun(String WelshNoun) {
+		this.welshNoun = WelshNoun;
+	}
 	
 	public String getQuestionType() {
         return questionType;
