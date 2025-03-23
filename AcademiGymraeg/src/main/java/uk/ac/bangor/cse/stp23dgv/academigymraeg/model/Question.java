@@ -12,5 +12,12 @@ public class Question {
         this.questionType = questionType;
         this.correctAnswer = correctAnswer;
     }
+	
+	//Getters and Setters
+	public int getId() {
+		return Id;
+	}
+	
+	
 
 }
