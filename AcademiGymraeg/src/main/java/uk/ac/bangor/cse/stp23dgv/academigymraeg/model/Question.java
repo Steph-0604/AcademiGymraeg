@@ -16,11 +16,10 @@ public class Question {
 	private String optionA;
 	private String correctAnswer;
 	
-	public Question(String englishNoun, String welshNoun, String gender, String questionType, String correctAnswer) {
+	public Question(String englishNoun, String welshNoun, String gender, String correctAnswer) {
         this.englishNoun = englishNoun;
         this.welshNoun = welshNoun;
         this.gender = gender;
-        this.questionType = questionType;
         this.correctAnswer = correctAnswer;
     }
 	
