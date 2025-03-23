@@ -6,5 +6,11 @@ public class Question {
 	private String questionText;
 	private String questionType; //Gender, Meaning, Translation
 	private String correctAnswer;
+	
+	public Question(String questionText, String questionType, String correctAnswer) {
+        this.questionText = questionText;
+        this.questionType = questionType;
+        this.correctAnswer = correctAnswer;
+    }
 
 }
