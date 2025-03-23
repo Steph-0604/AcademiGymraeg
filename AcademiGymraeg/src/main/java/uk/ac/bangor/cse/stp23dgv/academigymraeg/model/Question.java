@@ -1,7 +1,7 @@
 package uk.ac.bangor.cse.stp23dgv.academigymraeg.model;
 import jakarta.persistence.*;
 
-
+@Entity
 public class Question {
 	private int Id;
 	private String questionText;
