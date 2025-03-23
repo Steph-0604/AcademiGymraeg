@@ -46,6 +46,10 @@ public class Question {
 		this.welshNoun = WelshNoun;
 	}
 	
+	public String gender() {
+		return gender;
+	}
+	
 	public String getQuestionType() {
         return questionType;
     }
