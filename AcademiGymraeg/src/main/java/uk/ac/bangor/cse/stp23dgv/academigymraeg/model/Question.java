@@ -66,6 +66,9 @@ public class Question {
 	public String getOptionB() {
 		return optionB;
 	}
+	public void setOptionB(String optionB) {
+		this.optionB = optionB;
+	}
 	public String getOptionC() {
 		return optionC;
 	}
