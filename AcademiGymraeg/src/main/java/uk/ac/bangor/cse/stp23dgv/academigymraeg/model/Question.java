@@ -33,7 +33,9 @@ public class Question {
 	public String getEnglishNoun() {
 		return englishNoun;
 	}
-	
+	public void setEnglishNoun(String englishNoun) {
+		this.englishNoun = englishNoun;
+	}
 
 	
 	public String getQuestionType() {
