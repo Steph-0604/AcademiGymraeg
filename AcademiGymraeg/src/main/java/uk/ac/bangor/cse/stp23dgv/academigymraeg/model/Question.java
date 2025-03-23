@@ -1,4 +1,5 @@
 package uk.ac.bangor.cse.stp23dgv.academigymraeg.model;
+import jakarta.persistence.*;
 
 
 public class Question {
