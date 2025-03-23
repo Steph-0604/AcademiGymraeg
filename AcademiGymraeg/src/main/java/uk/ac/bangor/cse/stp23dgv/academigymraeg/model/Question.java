@@ -66,6 +66,9 @@ public class Question {
 	public String getOptionB() {
 		return optionB;
 	}
+	public String getOptionC() {
+		return optionC;
+	}
 	public String getCorrectAnswer() {
         return correctAnswer;
     }
