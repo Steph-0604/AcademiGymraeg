@@ -46,7 +46,7 @@ public class Question {
 		this.welshNoun = WelshNoun;
 	}
 	
-	public String gender() {
+	public String getGender() {
 		return gender;
 	}
 	
