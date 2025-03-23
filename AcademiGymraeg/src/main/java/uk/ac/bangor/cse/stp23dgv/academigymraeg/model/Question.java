@@ -36,6 +36,10 @@ public class Question {
 	public void setEnglishNoun(String englishNoun) {
 		this.englishNoun = englishNoun;
 	}
+	
+	public String getWelshNoun() {
+		return WelshNoun;
+	}
 
 	
 	public String getQuestionType() {
