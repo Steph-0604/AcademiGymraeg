@@ -12,6 +12,7 @@ public class Question {
 	private int Id;
 	private String englishNoun;
 	private String welshNoun;
+	private String gender; //Masculine, Feminine
 	private String questionType; //Gender, Meaning, Translation
 	private String correctAnswer;
 	
