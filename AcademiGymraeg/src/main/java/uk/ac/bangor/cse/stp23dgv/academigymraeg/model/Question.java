@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int questionId;
 	private String englishNoun;
 	private String welshNoun;
 	private String gender; //Masculine, Feminine
@@ -24,13 +24,9 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 	
-	@ManyToOne
-    @JoinColumn(name = "test_id") // Links question to a test
-    private Test test;
-	
 	//Getters and Setters
-	public int getId() {
-		return Id;
+	public int getQuestionId() {
+		return questionId;
 	}
 	public void setId(int id) {
         this.Id = Id;
