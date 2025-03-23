@@ -60,6 +60,9 @@ public class Question {
 	public String getOptionA() {
 		return optionA;
 	}
+	public void setOptionA(String optionA) {
+		this.optionA = optionA;
+	}
 	
 	public String getCorrectAnswer() {
         return correctAnswer;
