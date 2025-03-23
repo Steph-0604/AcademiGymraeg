@@ -20,6 +20,9 @@ public class Question {
 	public void setId(int id) {
         this.Id = Id;
     }
+	public String getQuestionText() {
+        return questionText;
+    }
 
 	
 	
