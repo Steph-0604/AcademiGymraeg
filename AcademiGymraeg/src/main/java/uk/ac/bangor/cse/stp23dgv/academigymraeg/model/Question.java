@@ -1,6 +1,10 @@
 package uk.ac.bangor.cse.stp23dgv.academigymraeg.model;
 import jakarta.persistence.*;
-
+/**
+ * Represents a Question entity for the application
+ * 
+ * @author Grishma 
+ */
 @Entity
 public class Question {
 	@Id
@@ -40,9 +44,6 @@ public class Question {
     }
 	public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
-    }
-
-	
-	
+    }	
 
 }
