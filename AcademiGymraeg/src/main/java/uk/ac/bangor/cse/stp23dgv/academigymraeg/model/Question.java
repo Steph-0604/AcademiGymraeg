@@ -30,12 +30,7 @@ public class Question {
         this.Id = Id;
     }
 	
-	public String getQuestionText() {
-        return questionText;
-    }
-	public void setQuestionText(String questionText) {
-        this.questionText = questionText;
-    }
+
 	
 	public String getQuestionType() {
         return questionType;
