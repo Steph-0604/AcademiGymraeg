@@ -72,6 +72,9 @@ public class Question {
 	public String getOptionC() {
 		return optionC;
 	}
+	public void setOptionC(String optionC) {
+		this.optionC = optionC;
+	}
 	public String getCorrectAnswer() {
         return correctAnswer;
     }
