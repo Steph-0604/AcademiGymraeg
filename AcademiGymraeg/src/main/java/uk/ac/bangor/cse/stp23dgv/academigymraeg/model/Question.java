@@ -57,6 +57,9 @@ public class Question {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	public String getOptionA() {
+		return optionA;
+	}
 	
 	public String getCorrectAnswer() {
         return correctAnswer;
