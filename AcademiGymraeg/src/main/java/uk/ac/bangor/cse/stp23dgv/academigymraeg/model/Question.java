@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int questionId;
+	private int questionId; //primary id
 	private String englishNoun;
 	private String welshNoun;
 	private String gender; //Masculine, Feminine
@@ -57,24 +57,28 @@ public class Question {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 	public String getOptionA() {
 		return optionA;
 	}
 	public void setOptionA(String optionA) {
 		this.optionA = optionA;
 	}
+	
 	public String getOptionB() {
 		return optionB;
 	}
 	public void setOptionB(String optionB) {
 		this.optionB = optionB;
 	}
+	
 	public String getOptionC() {
 		return optionC;
 	}
 	public void setOptionC(String optionC) {
 		this.optionC = optionC;
 	}
+	
 	public String getCorrectAnswer() {
         return correctAnswer;
     }
