@@ -14,6 +14,8 @@ public class Question {
 	private String welshNoun;
 	private String gender; //Masculine, Feminine
 	private String optionA;
+	private String optionB;
+	private String optionC;
 	private String correctAnswer;
 	
 	public Question(String englishNoun, String welshNoun, String gender, String correctAnswer) {
