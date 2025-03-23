@@ -24,6 +24,10 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 	
+	@ManyToOne
+    @JoinColumn(name = "test_id") // Links question to a test
+    private Test test;
+	
 	//Getters and Setters
 	public int getId() {
 		return Id;
