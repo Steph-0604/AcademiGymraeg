@@ -17,6 +17,7 @@ public class Question {
 	
 	public Question(String englishNoun, String welshNoun, String questionType, String correctAnswer) {
         this.englishNoun = englishNoun;
+        this.welshNoun = welshNoun;
         this.questionType = questionType;
         this.correctAnswer = correctAnswer;
     }
