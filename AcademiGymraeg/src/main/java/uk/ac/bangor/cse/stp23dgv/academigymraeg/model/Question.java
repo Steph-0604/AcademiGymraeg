@@ -53,13 +53,6 @@ public class Question {
 		this.gender = gender;
 	}
 	
-	public String getQuestionType() {
-        return questionType;
-    }
-	public void setQuestionType(String questionType) {
-        this.questionType = questionType;
-    }
-	
 	public String getCorrectAnswer() {
         return correctAnswer;
     }
