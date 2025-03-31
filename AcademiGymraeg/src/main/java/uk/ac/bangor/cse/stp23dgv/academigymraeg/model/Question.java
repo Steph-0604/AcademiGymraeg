@@ -12,14 +12,12 @@ public class Question {
 	private int questionId; //primary id
 	private String englishNoun;
 	private String welshNoun;
-	private String gender; //Masculine, Feminine
-	private String correctAnswer;
+	private String gender; 
 	
-	public Question(String englishNoun, String welshNoun, String gender, String correctAnswer) {
+	public Question(String englishNoun, String welshNoun, String gender) {
         this.englishNoun = englishNoun;
         this.welshNoun = welshNoun;
         this.gender = gender;
-        this.correctAnswer = correctAnswer;
     }
 	
 	//Getters and Setters
@@ -50,12 +48,5 @@ public class Question {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-	public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-	public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }	
 
 }
