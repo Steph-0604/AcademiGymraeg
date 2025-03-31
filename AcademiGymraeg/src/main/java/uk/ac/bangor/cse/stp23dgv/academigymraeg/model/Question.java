@@ -15,7 +15,7 @@ public class Question {
 	private String gender; //Masculine, Feminine
 	private String correctAnswer;
 	
-	public Question(String englishNoun, String welshNoun, String gender, String optionA, String optionB, String optionC, String correctAnswer) {
+	public Question(String englishNoun, String welshNoun, String gender, String correctAnswer) {
         this.englishNoun = englishNoun;
         this.welshNoun = welshNoun;
         this.gender = gender;
