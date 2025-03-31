@@ -14,6 +14,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+/**
+ * Represents a User entity for the application
+ * 
+ * @author Steph Parry
+ */
 
 public class User implements UserDetails {
 	@Id
@@ -37,7 +42,6 @@ public class User implements UserDetails {
 		perms.add(new SimpleGrantedAuthority("ROLE_USER"));
 		if(admin)
 			perms.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		
 		return perms;
 	}
 
