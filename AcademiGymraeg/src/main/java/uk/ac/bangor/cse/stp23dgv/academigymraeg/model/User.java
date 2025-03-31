@@ -35,6 +35,9 @@ public class User implements UserDetails {
 	
 	@Column(nullable = false)
 	private boolean admin = false;
+	
+	@Column(nullable = false)
+	private boolean instructor = false;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
