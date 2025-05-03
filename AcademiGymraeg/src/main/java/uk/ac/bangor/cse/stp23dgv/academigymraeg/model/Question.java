@@ -3,50 +3,108 @@ import jakarta.persistence.*;
 /**
  * Represents a Question entity for the application
  * 
- * @author Grishma 
+ * @author Grishma , Harry
  */
 @Entity
 public class Question {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int questionId; //primary id
-	private String englishNoun;
-	private String welshNoun;
-	private String gender; 
+    
+	public static final String TYPE_GENDER = "GENDER";
+    public static final String TYPE_MEANING = "MEANING";
+    public static final String TYPE_TRANSLATION_TO_WELSH = "TRANSLATION_TO_WELSH";
+    public static final String[] ALL_TYPES = {
+        TYPE_GENDER,
+        TYPE_MEANING,
+        TYPE_TRANSLATION_TO_WELSH
+    };
 	
-	public Question(String englishNoun, String welshNoun, String gender) {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int questionId;
+    private String englishNoun;
+    private String welshNoun;
+    private String gender;
+
+    private String questionType; 
+
+    private String studentAnswer;
+    private boolean correct;
+
+    @ManyToOne
+    @JoinColumn(name = "test_id")
+    private Test test;
+
+    public Question() {}
+
+    public Question(String englishNoun, String welshNoun, String gender, String questionType) {
         this.englishNoun = englishNoun;
         this.welshNoun = welshNoun;
         this.gender = gender;
+        this.questionType = questionType;
     }
-	
-	//Getters and Setters
+
 	public int getQuestionId() {
 		return questionId;
 	}
+
 	public void setQuestionId(int questionId) {
-        this.questionId = questionId;
-    }
-	
+		this.questionId = questionId;
+	}
+
 	public String getEnglishNoun() {
 		return englishNoun;
 	}
+
 	public void setEnglishNoun(String englishNoun) {
 		this.englishNoun = englishNoun;
 	}
-	
+
 	public String getWelshNoun() {
 		return welshNoun;
 	}
-	public void setWelshNoun(String WelshNoun) {
-		this.welshNoun = WelshNoun;
+
+	public void setWelshNoun(String welshNoun) {
+		this.welshNoun = welshNoun;
 	}
-	
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
+	public String getQuestionType() {
+		return questionType;
+	}
+
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
+	}
+
+	public String getStudentAnswer() {
+		return studentAnswer;
+	}
+
+	public void setStudentAnswer(String studentAnswer) {
+		this.studentAnswer = studentAnswer;
+	}
+
+	public boolean isCorrect() {
+		return correct;
+	}
+
+	public void setCorrect(boolean correct) {
+		this.correct = correct;
+	}
+
+	public Test getTest() {
+		return test;
+	}
+
+	public void setTest(Test test) {
+		this.test = test;
+	}
+
 }
+
