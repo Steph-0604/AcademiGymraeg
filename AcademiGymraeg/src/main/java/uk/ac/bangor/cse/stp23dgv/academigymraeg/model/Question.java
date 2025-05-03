@@ -41,6 +41,32 @@ public class Question {
         this.gender = gender;
         this.questionType = questionType;
     }
+    /**
+     * Steph's code
+	 * - Compares submitted answer with the correct answer based on question type.
+	 * - Updates the 'correct' field and returns the result.
+     */
+    public boolean checkStudentAnswer(String submittedAnswer) {
+        boolean result = false;
+
+        switch (this.questionType) {
+            case TYPE_GENDER:
+                result = submittedAnswer != null && submittedAnswer.equalsIgnoreCase(this.gender);
+                break;
+            case TYPE_MEANING:
+                result = submittedAnswer != null && submittedAnswer.equalsIgnoreCase(this.englishNoun);
+                break;
+            case TYPE_TRANSLATION_TO_WELSH:
+                result = submittedAnswer != null && submittedAnswer.equalsIgnoreCase(this.welshNoun);
+                break;
+            default:
+                result = false;
+        }
+
+        this.correct = result;
+        return result;
+    }
+
 
 	public int getQuestionId() {
 		return questionId;
