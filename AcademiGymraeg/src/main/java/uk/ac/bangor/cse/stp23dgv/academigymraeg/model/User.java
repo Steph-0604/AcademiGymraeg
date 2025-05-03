@@ -16,6 +16,16 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+/**
+ * Represents a User entity for the application
+ * 
+ * @author Steph Parry
+ *
+ * Code by Steph Parry:
+ * - Getters for username and password
+ * - getAuthorities() method for assigning user roles
+ * - toString() method for readable output
+ */
 
 @Entity
 @Table(name = "users")
@@ -39,7 +49,18 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private boolean instructor = false;
 
-    public User() {}
+    /**
+     * A default no-argument constructor
+     */
+    public User() {
+    }
+    
+    public User(String username, String password, boolean admin, boolean instructor) {
+    	this.username = username;
+    	this.password = password;
+    	this.admin = admin;
+    	this.instructor = instructor;
+    }
 
     // Getters and setters
     public void setUsername(String username) {
@@ -66,17 +87,27 @@ public class User implements UserDetails {
         this.instructor = instructor;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> perms = new LinkedList<>();
-        perms.add(new SimpleGrantedAuthority("ROLE_USER"));
-        if (admin)
-            perms.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        if (instructor)
-            perms.add(new SimpleGrantedAuthority("ROLE_INSTRUCTOR"));
-        return perms;
-    }
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> perms = new LinkedList<GrantedAuthority>();
+		perms.add(new SimpleGrantedAuthority("ROLE_USER"));
+		if (admin) {
+			perms.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		} else if (instructor) {
+			perms.add(new SimpleGrantedAuthority("ROLE_INSTRUCTOR"));
+		}
+		return perms;
+	}
 
+	@Override
+	public String toString() {
+	    return "User{" +
+	            "username='" + username + '\'' +
+	            ", admin=" + admin +
+	            ", instructor=" + instructor +
+	            '}';
+	}
+	
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -107,3 +138,5 @@ public class User implements UserDetails {
         return username;
     }
 }
+
+
