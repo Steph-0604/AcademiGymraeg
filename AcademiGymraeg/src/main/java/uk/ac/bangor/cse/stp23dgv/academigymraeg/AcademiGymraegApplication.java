@@ -16,26 +16,29 @@ import uk.ac.bangor.cse.stp23dgv.academigymraeg.security.RepositoryUserDetailsSe
 
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
-
 @SpringBootApplication
 public class AcademiGymraegApplication {
 
     @Autowired
-    private RepositoryUserDetailsServiceImpl uds; 
+    private RepositoryUserDetailsServiceImpl uds; // This will inject the RepositoryUserDetailsServiceImpl
 
     public static void main(String[] args) {
         SpringApplication.run(AcademiGymraegApplication.class, args);
     }
 
     @Bean
-    PasswordEncoder encoder() {
+    public PasswordEncoder encoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Bean
-    SecurityFilterChain securitySetup(HttpSecurity http) throws Exception {
-        return http.userDetailsService(uds).formLogin(form -> form.loginProcessingUrl("/login"))
-                .logout(lo -> lo.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))).build();
-    }
+	@Bean
+	SecurityFilterChain securitySetup(HttpSecurity http) throws Exception {
+		return http.userDetailsService(uds)
+				   .formLogin(form -> form.loginProcessingUrl("/login"))
+				   .logout(lo -> lo.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")))
+				   .build();
+		
+	}
+	
 
 }
