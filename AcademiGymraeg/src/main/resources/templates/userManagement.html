@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+</head>
+<body>
+    <h1>User Management</h1>
+
+    <!-- Create User Form -->
+    <div th:if="${action == 'create'}">
+        <h2>Create New User</h2>
+        <form th:action="@{/academiGymraeg/admin/users/create}" method="POST" th:object="${user}">
+            <label for="username">Username:</label>
+            <input type="text" th:field="*{username}" />
+            <label for="password">Password:</label>
+            <input type="password" th:field="*{password}" />
+            <label for="roles">Roles:</label>
+            <input type="checkbox" th:field="*{admin}" /> Admin
+            <input type="checkbox" th:field="*{instructor}" /> Instructor
+            <button type="submit">Create User</button>
+        </form>
+    </div>
+
+    <!-- Edit User Form -->
+    <div th:if="${action == 'edit'}">
+        <h2>Edit User</h2>
+        <form th:action="@{/academiGymraeg/admin/users/edit}" method="POST" th:object="${user}">
+            <input type="hidden" th:field="*{username}" />
+            <label for="password">Password:</label>
+            <input type="password" th:field="*{password}" />
+            <label for="roles">Roles:</label>
+            <input type="checkbox" th:field="*{admin}" /> Admin
+            <input type="checkbox" th:field="*{instructor}" /> Instructor
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- List Users -->
+    <div th:if="${action == 'list'}">
+        <h2>All Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.admin ? 'Admin' : ''}"></td>
+                    <td th:text="${user.instructor ? 'Instructor' : ''}"></td>
+                    <td>
+                        <a th:href="@{/academiGymraeg/admin/users/edit/{username}(username=${user.username})}">Edit</a>
+                        <a th:href="@{/academiGymraeg/admin/users/delete/{username}(username=${user.username})}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
