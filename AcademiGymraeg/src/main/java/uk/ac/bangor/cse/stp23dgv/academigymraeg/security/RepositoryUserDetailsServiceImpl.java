@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.model.User;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.UserRepository;
-
+/**
+ * @author Steph Parry
+ */
 @Component
 public class RepositoryUserDetailsServiceImpl implements UserDetailsService {
 

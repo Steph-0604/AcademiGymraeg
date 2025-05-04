@@ -13,7 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.security.RepositoryUserDetailsServiceImpl;
-
+/**
+ * @author Steph Parry
+ */
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 @SpringBootApplication
