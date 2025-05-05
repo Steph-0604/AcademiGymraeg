@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <form th:action="@{/academiGymraeg}" th:object="${test}" method="post">
+    <div th:each="question, status : ${questions}" th:if="${status.index < 2}">
+      <!-- Essential hidden fields -->
+      <input type="hidden" th:field="*{questions[__${status.index}__].questionId}" th:value="${question.questionId}" />
+      <input type="hidden" th:field="*{questions[__${status.index}__].questionType}" th:value="${question.questionType}" />
+      
+      <!-- Display question based on type -->
+      <p th:text="${question.questionType == 'GENDER' ? 'Gender of ' + question.welshNoun + '?' : 
+                   (question.questionType == 'MEANING' ? 'Meaning of ' + question.welshNoun + '?' : 
+                   'Welsh for ' + question.englishNoun + '?')}"></p>
+      
+      <!-- Answer input -->
+      <input type="text" th:field="*{questions[__${status.index}__].studentAnswer}" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
