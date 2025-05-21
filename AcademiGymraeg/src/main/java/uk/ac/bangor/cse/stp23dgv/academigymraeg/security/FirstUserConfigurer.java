@@ -28,6 +28,22 @@ public class FirstUserConfigurer {
 				
 				repo.save(u);
 			}
+		
+		 if (!repo.existsById("instructor@instructor.com")) {
+		        User instructor = new User();
+		        instructor.setInstructor(true);
+		        instructor.setPassword(encoder.encode("password"));
+		        instructor.setUsername("instructor@instructor.com");
+		        repo.save(instructor);
+		    }
+		    
+		    
+		 if (!repo.existsById("user@user.com")) {
+		        User user = new User();
+		        user.setPassword(encoder.encode("password"));
+		        user.setUsername("user@user.com");
+		        repo.save(user);
+		    }
 		}
-
 }
+
