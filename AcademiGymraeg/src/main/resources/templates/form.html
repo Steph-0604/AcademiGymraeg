@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <h1>Welsh Language Test</h1>
+  
+  <form th:action="@{/academiGymraeg}" th:object="${test}" method="post">
+    <!-- go through questions -->
+    <div th:each="question, status : ${questions}">
+      <!-- Hidden fields  -->
+      <input type="hidden" th:field="*{questions[__${status.index}__].questionId}" th:value="${question.questionId}" />
+      <input type="hidden" th:field="*{questions[__${status.index}__].questionType}" th:value="${question.questionType}" />
+      <input type="hidden" th:field="*{questions[__${status.index}__].englishNoun}" th:value="${question.englishNoun}" />
+      <input type="hidden" th:field="*{questions[__${status.index}__].welshNoun}" th:value="${question.welshNoun}" />
+      <input type="hidden" th:field="*{questions[__${status.index}__].gender}" th:value="${question.gender}" />
+      
+      <!-- Questions -->
+      <p>
+        <span th:text="${question.questionType == 'GENDER' ? 'What is the gender of ' + question.welshNoun + '?' : 
+                 (question.questionType == 'MEANING' ? 'What is the meaning of ' + question.welshNoun + '?' : 
+                 'What is the Welsh word for ' + question.englishNoun + '?')}"></span>
+      </p>
+      
+      <!-- Answer input -->
+      <input type="text" th:field="*{questions[__${status.index}__].studentAnswer}" />
+    </div>
+    
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

@@ -42,7 +42,7 @@ public class AcademiGymraegApplication {
         return http.userDetailsService(uds)
                 .formLogin(form -> form
                     //.loginProcessingUrl("/login")
-                   // .loginPage("/login")  // login page
+                   //.loginPage("/login")  // login page
                     .successHandler((request, response, authentication) -> {
                         // Redirect based on role
                         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
