@@ -13,7 +13,9 @@ import uk.ac.bangor.cse.stp23dgv.academigymraeg.model.Test;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.model.User;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.UserRepository;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.service.TestService;
-
+/**
+ * @author Leon O'Hanlon
+ */
 @Controller
 @RequestMapping("/tests/web")
 public class TestWebController {
@@ -26,6 +28,7 @@ public class TestWebController {
         this.userRepository = userRepository;
     }
     
+    //Should Use Stephs test generation and feed user info
     @GetMapping("/generate")
     public String generateTestGet(Authentication authentication, Model model) {
         String username = authentication.getName();
@@ -38,10 +41,10 @@ public class TestWebController {
 
         Test createdTest = testService.createAndSaveTestForUser(userOpt.get());
         
-        // Add the test to the model
+        
         model.addAttribute("test", createdTest);
         model.addAttribute("questions", createdTest.getQuestions());
         
-        return "form";  // Return the view name directly
+        return "form";  
     }
     }
