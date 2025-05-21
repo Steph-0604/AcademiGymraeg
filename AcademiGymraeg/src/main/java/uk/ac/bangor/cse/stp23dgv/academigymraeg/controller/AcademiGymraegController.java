@@ -58,7 +58,10 @@ public class AcademiGymraegController {
             m.addAttribute("test", test);
             return form(m);
         }
-
+        if (test.getDateCreated() == null) {
+            test.setDateCreated(LocalDateTime.now());
+        }
+        
         int score = 0;
         List<Question> submittedQuestions = test.getQuestions();
 
@@ -70,16 +73,23 @@ public class AcademiGymraegController {
                 if (correct) {
                     score++;
                 }
+                // Update the database question with the student's answer
+                dbQuestion.setStudentAnswer(submitted.getStudentAnswer());
+                dbQuestion.setCorrect(correct);
+                questionrepo.save(dbQuestion); // Save the question separately
             }
         }
-
+        
+        // Clear the questions to stop crash
+        test.setQuestions(null);
+        
         test.setScore(score);
         test.setDateCompleted(LocalDateTime.now());
         test.setCompleted(true);
         testrepo.save(test);
 
         m.addAttribute("message", "Test completed! Your score: " + score);
-        return form(m);
+        return "results";
     }
 	@GetMapping("/delete")
 	@PreAuthorize("hasRole('ADMIN')")
