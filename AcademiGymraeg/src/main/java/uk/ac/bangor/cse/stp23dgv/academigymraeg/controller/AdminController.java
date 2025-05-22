@@ -1,4 +1,15 @@
 package uk.ac.bangor.cse.stp23dgv.academigymraeg.controller;
+/**
+ * AdminController
+ * Manages user administration: listing, creating, editing, deleting users,
+ * and resetting passwords.
+ * 
+ * Secured so only users with ADMIN role can access.
+ * 
+ * Written by Steph Parry.
+ * 
+ */
+
 
 import java.util.List;
 

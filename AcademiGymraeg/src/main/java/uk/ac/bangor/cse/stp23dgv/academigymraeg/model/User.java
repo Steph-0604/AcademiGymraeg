@@ -21,10 +21,16 @@ import jakarta.validation.constraints.Size;
  * 
  * @author Steph Parry
  *
- * Code by Steph Parry:
- * - Getters for username and password
- * - getAuthorities() method for assigning user roles
- * - toString() method for readable output
+ * Contributions by Steph Parry:
+ * - Defined fields for username, password, roles (admin, instructor, student)
+ * - Getters and setters for username, password, and roles
+ * - Implemented getAuthorities() for role-based permissions
+ * - toString() method for debugging/readability
+ * 
+ * Note:
+ * The methods below implementing UserDetails interface for account status and enabling
+ * (isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled, getPassword, getUsername)
+ * were added by Harry .
  */
 
 @Entity

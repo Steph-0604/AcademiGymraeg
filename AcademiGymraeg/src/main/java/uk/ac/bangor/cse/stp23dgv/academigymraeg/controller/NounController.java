@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.model.Noun;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.NounRepository;
+/**
+ * NounController
+ * Handles CRUD operations for Noun entities within the admin section.
+ * 
+ * Written by Steph Parry.
+ */
 
 @Controller
 @RequestMapping("/admin/nouns")

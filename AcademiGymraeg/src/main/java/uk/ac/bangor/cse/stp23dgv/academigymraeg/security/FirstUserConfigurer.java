@@ -7,6 +7,14 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.model.User;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.UserRepository;
+/**
+ * Initial implementation by Steph Parry.
+ * 
+ * Originally this class only created an admin user during startup.
+ * Subsequent edits added instructor and regular user creation.
+ * 
+ * Responsible for setting up initial default users with encoded passwords.
+ */
 
 @Component
 

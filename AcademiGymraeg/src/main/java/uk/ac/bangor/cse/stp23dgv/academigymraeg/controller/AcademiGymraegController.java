@@ -22,6 +22,19 @@ import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.QuestionRepository;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.TestRepository;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.UserRepository;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.service.QuestionGeneratorService;
+/**
+ * AcademiGymraegController
+ * 
+ * Manages the Welsh language test workflow, including:
+ * - Displaying a test form with user-specific generated questions.
+ * - Validating and scoring submitted answers, saving correctness per question.
+ * - Persisting completed tests linked to authenticated users.
+ * - Providing user test history and admin-only test data deletion.
+ * - Handling missing users and securing endpoints with Spring Security.
+ * 
+ * Combines Leon’s enhancements for answer validation and question updates,
+ * with Steph’s additions for user association, test generation, and history.
+ */
 
 @Controller
 @RequestMapping("/academiGymraeg")

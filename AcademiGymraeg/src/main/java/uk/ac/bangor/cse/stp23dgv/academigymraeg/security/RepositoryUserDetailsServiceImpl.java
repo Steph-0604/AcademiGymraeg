@@ -11,6 +11,13 @@ import org.springframework.stereotype.Component;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.model.User;
 import uk.ac.bangor.cse.stp23dgv.academigymraeg.repo.UserRepository;
 /**
+ * Custom UserDetailsService implementation that loads user details from the UserRepository.
+ * 
+ * This class was implemented by Steph Parry.
+ * 
+ * It retrieves a User entity by username and returns it as a UserDetails object for Spring Security.
+ * If the user is not found, it throws UsernameNotFoundException.
+ * 
  * @author Steph Parry
  */
 @Component

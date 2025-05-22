@@ -1,4 +1,9 @@
 package uk.ac.bangor.cse.stp23dgv.academigymraeg.repo;
+/**
+ * UserRepository interface for accessing User data.
+ * 
+ * Created by Steph Parry.
+ */
 
 import java.util.Optional;
 

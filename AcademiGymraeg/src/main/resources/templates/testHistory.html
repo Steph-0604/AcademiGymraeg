@@ -1,4 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noun Management</title>
+  </head>
+  <body>
+
 <h2>Your Test History</h2>
+<!--
+  User Test History by Steph:
+  - Displays a table of past tests with date, score, and completion status.
+  - Shows message if no test history is available.
+  - Uses Thymeleaf to conditionally render content based on test list emptiness.
+-->
 
 <div th:if="${#lists.isEmpty(tests)}">
   <p>No test history available.</p>
@@ -17,3 +32,6 @@
 	</tr>
   </tr>
 </table>
+</body>
+</html>
+
