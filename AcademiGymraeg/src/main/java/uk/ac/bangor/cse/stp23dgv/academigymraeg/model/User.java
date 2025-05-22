@@ -49,17 +49,22 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private boolean instructor = false;
 
+	@Column(nullable = false)
+	private boolean student = false;
+
     /**
      * A default no-argument constructor
      */
     public User() {
     }
     
-    public User(String username, String password, boolean admin, boolean instructor) {
+    public User(String username, String password, boolean admin, boolean instructor, boolean student) {
     	this.username = username;
     	this.password = password;
     	this.admin = admin;
     	this.instructor = instructor;
+    	this.student = student;
+
     }
 
     // Getters and setters
@@ -70,6 +75,15 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+
+	public boolean isStudent() {
+	    return student;
+	}
+	
+	public void setStudent(boolean student) {
+	    this.student = student;
+	}
 
     public boolean isAdmin() {
         return admin;
@@ -107,6 +121,7 @@ public class User implements UserDetails {
 	            ", instructor=" + instructor +
 	            '}';
 	}
+	
 	
     @Override
     public boolean isAccountNonExpired() {

@@ -1,63 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>User Management</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        a, button {
+            text-decoration: none;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 2px;
+        }
+
+        a:hover, button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ecf0f1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        form.inline-form {
+            display: inline-block;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 8px;
+            margin: 5px 0;
+            width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .checkbox-group label {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
+<div class="container">
     <h1>User Management</h1>
 
-    <!-- Create User Form -->
-    <div th:if="${action == 'create'}">
-        <h2>Create New User</h2>
-        <form th:action="@{/academiGymraeg/admin/users/create}" method="POST" th:object="${user}">
-            <label for="username">Username:</label>
-            <input type="text" th:field="*{username}" />
-            <label for="password">Password:</label>
-            <input type="password" th:field="*{password}" />
-            <label for="roles">Roles:</label>
-            <input type="checkbox" th:field="*{admin}" /> Admin
-            <input type="checkbox" th:field="*{instructor}" /> Instructor
-            <button type="submit">Create User</button>
-        </form>
-    </div>
-
-    <!-- Edit User Form -->
-    <div th:if="${action == 'edit'}">
-        <h2>Edit User</h2>
-        <form th:action="@{/academiGymraeg/admin/users/edit}" method="POST" th:object="${user}">
-            <input type="hidden" th:field="*{username}" />
-            <label for="password">Password:</label>
-            <input type="password" th:field="*{password}" />
-            <label for="roles">Roles:</label>
-            <input type="checkbox" th:field="*{admin}" /> Admin
-            <input type="checkbox" th:field="*{instructor}" /> Instructor
-            <button type="submit">Save Changes</button>
-        </form>
-    </div>
-
     <!-- List Users -->
-    <div th:if="${action == 'list'}">
-        <h2>All Users</h2>
+    <div th:if="${action == null}">
+        <div style="text-align: right;">
+            <a th:href="@{/admin/users/new}">Create New User</a>
+        </div>
         <table>
             <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Roles</th>
-                    <th>Actions</th>
-                </tr>
+                <tr><th>Username</th><th>Roles</th><th>Actions</th></tr>
             </thead>
             <tbody>
                 <tr th:each="user : ${users}">
-                    <td th:text="${user.username}"></td>
-                    <td th:text="${user.admin ? 'Admin' : ''}"></td>
-                    <td th:text="${user.instructor ? 'Instructor' : ''}"></td>
+                    <td th:text="${user.username}">Username</td>
                     <td>
-                        <a th:href="@{/academiGymraeg/admin/users/edit/{username}(username=${user.username})}">Edit</a>
-                        <a th:href="@{/academiGymraeg/admin/users/delete/{username}(username=${user.username})}">Delete</a>
+                        <span th:if="${user.admin}">Admin </span>
+                        <span th:if="${user.instructor}">Instructor </span>
+                        <span th:if="${user.student}">Student </span>
+                    </td>
+                    <td>
+                        <a th:href="@{'/admin/users/edit/' + ${user.username}}">Edit</a>
+                        <a th:href="@{'/admin/users/delete/' + ${user.username}}">Delete</a>
+                        <form th:action="@{/admin/users/reset-password}" method="POST" class="inline-form">
+                            <input type="hidden" name="username" th:value="${user.username}" />
+                            <input type="text" name="newPassword" placeholder="New Password" required />
+                            <button type="submit">Reset</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <!-- Create/Edit User Form -->
+    <div th:if="${action == 'create' or action == 'edit'}">
+        <h2 th:text="${action == 'create' ? 'Create User' : 'Edit User'}">Form</h2>
+        <form th:action="@{${action == 'create' ? '/admin/users/create' : '/admin/users/edit'}}"
+              method="POST" th:object="${user}">
+
+            <label>Username:
+                <input th:field="*{username}" th:readonly="${action == 'edit'}" />
+            </label>
+
+            <label th:if="${action == 'create'}">Password:
+                <input type="password" th:field="*{password}" />
+            </label>
+
+            <div class="checkbox-group">
+                <label><input type="checkbox" th:field="*{admin}" /> Admin</label>
+                <label><input type="checkbox" th:field="*{instructor}" /> Instructor</label>
+                <label><input type="checkbox" th:field="*{student}" /> Student</label>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" th:text="${action == 'create' ? 'Create' : 'Save Changes'}">Submit</button>
+                <a th:href="@{/admin/users}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

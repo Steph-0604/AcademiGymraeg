@@ -1,0 +1,19 @@
+<h2>Your Test History</h2>
+
+<div th:if="${#lists.isEmpty(tests)}">
+  <p>No test history available.</p>
+</div>
+
+<table th:if="${!#lists.isEmpty(tests)}">
+  <tr>
+    <th>Date</th>
+    <th>Score</th>
+    <th>Status</th>
+  </tr>
+	<tr th:each="t : ${tests}">
+	  <td th:text="${#dates.format(t.dateCreated, 'dd/MM/yyyy HH:mm')}"></td>
+	  <td th:text="${t.score}"></td>
+	  <td th:text="${t.completed ? 'Completed' : 'Incomplete'}"></td>
+	</tr>
+  </tr>
+</table>
