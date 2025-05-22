@@ -53,7 +53,7 @@ public class AcademiGymraegController {
 
         // Generate a new test with random questions for the user
         Test test = questionGeneratorService.generateTestForUser(user);
-
+        test.setUser(user); 
         // Save the test so you can link questions to it in DB
         testrepo.save(test);
 

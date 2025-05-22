@@ -7,10 +7,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @Controller
 public class HomeController {
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+	@GetMapping("/login")
+	public String login() {
+	    return "login";  
+	}
 
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
